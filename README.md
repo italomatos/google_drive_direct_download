@@ -22,7 +22,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+shared_file_url = 'https://docs.google.com/document/d/1GhXACQhr8l5xlZWTW2nJJdXzqmUypiaJHkMpzkt9i4U/edit?usp=sharing'
+
+direct_url = GoogleDrive::DirectDownload.new(shared_file_url).call
+puts direct_url
+```
 
 ## Development
 
@@ -32,4 +37,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/google_drive_direct_download.
+Bug reports and pull requests are welcome on GitHub at https://github.com/italomatos/google_drive_direct_download.
