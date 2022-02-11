@@ -1,7 +1,7 @@
 module GoogleDrive
   class DirectDownload
 
-    VALID_EXPORT_FORMATS = %w(html pdf docx).freeze
+    VALID_EXPORT_FORMATS = %w(html pdf docx txt odt epub).freeze
     attr_accessor :file_url, :export_format
     
     def initialize(file_url, export_format=:pdf)

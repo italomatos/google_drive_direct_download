@@ -20,12 +20,21 @@ Or install it yourself as:
 
     $ gem install google_drive_direct_download
 
-## Usage
+## Usage for Google Drive Files
+
+```ruby
+shared_file_url = 'https://drive.google.com/file/d/1rPaKSOqnOyrnwhYctJH1oEZJXRf45Izm/view?usp=sharing'
+
+direct_url = GoogleDrive::Drive::DirectDownload.new(shared_file_url).call
+puts direct_url
+```
+
+## Usage for Google Document Files
 
 ```ruby
 shared_file_url = 'https://docs.google.com/document/d/1GhXACQhr8l5xlZWTW2nJJdXzqmUypiaJHkMpzkt9i4U/edit?usp=sharing'
 
-direct_url = GoogleDrive::DirectDownload.new(shared_file_url).call
+direct_url = GoogleDrive::Docs::DirectDownload.new(shared_file_url).call
 puts direct_url
 ```
 

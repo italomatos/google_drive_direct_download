@@ -1,4 +1,4 @@
-RSpec.describe GoogleDrive::DirectDownload do
+RSpec.describe GoogleDrive::Docs::DirectDownload do
   
   
   describe '#call' do 
