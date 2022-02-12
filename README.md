@@ -25,7 +25,7 @@ Or install it yourself as:
 ```ruby
 shared_file_url = 'https://drive.google.com/file/d/1rPaKSOqnOyrnwhYctJH1oEZJXRf45Izm/view?usp=sharing'
 
-direct_url = GoogleDrive::Drive::DirectDownload.new(shared_file_url).call
+direct_url = Google::Drive::DirectDownload.new(shared_file_url).call
 puts direct_url
 ```
 
@@ -34,7 +34,7 @@ puts direct_url
 ```ruby
 shared_file_url = 'https://docs.google.com/document/d/1GhXACQhr8l5xlZWTW2nJJdXzqmUypiaJHkMpzkt9i4U/edit?usp=sharing'
 
-direct_url = GoogleDrive::Docs::DirectDownload.new(shared_file_url).call
+direct_url = Google::Docs::DirectDownload.new(shared_file_url).call
 puts direct_url
 ```
 
