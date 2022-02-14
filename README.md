@@ -30,6 +30,19 @@ direct_url = Google::DirectDownload.new(shared_file_url).call
 puts direct_url
 ```
 
+## Usage for Google Docs Download
+
+```ruby
+require 'open-uri'
+require 'csv'
+shared_file_url = 'https://docs.google.com/spreadsheets/d/1AW8dIvzXSWiE1jRiSwfgQHKnt6CmTycf_FRYdNIzIUE/edit?usp=sharing'
+
+direct_url = Google::Docs::DirectDownload.new(shared_file_url, :csv).call
+CSV.foreach(open(direct_url).path) do |row|
+  puts "#{row[0]}=>#{row[1]}"
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
