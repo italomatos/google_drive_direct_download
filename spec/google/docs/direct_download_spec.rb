@@ -5,13 +5,24 @@ RSpec.describe Google::Docs::DirectDownload do
     subject { described_class.new(file_url).call }
 
     context 'valid file url syntax' do
-      let(:file_url) { 'https://docs.google.com/document/d/1y0PEBZv47rfYkvLQugUv_RmInahlcMyo898fLabTxQ0/edit?usp=sharing' }
+      context 'when document file' do
+        let(:file_url) { 'https://docs.google.com/document/d/1y0PEBZv47rfYkvLQugUv_RmInahlcMyo898fLabTxQ0/edit?usp=sharing' }
 
-      it 'returns correct direct download url' do
-        is_expected.to eq('https://docs.google.com/document/d/1y0PEBZv47rfYkvLQugUv_RmInahlcMyo898fLabTxQ0/export?format=pdf')
+        it 'returns correct direct download url' do
+          is_expected.to eq('https://docs.google.com/document/d/1y0PEBZv47rfYkvLQugUv_RmInahlcMyo898fLabTxQ0/export?format=pdf')
+        end
+      end
+
+      context 'when spreadsheet file' do
+        let(:file_url) { 'https://docs.google.com/spreadsheets/d/1y0PEBZv47rfYkvLQugUv_RmInahlcMyo898fLabTxQ0/edit' }
+
+        it 'returns correct direct download url' do
+          is_expected.to eq('https://docs.google.com/spreadsheets/d/1y0PEBZv47rfYkvLQugUv_RmInahlcMyo898fLabTxQ0/export?format=pdf')
+        end
       end
 
       context 'when export format is not default' do
+        let(:file_url) { 'https://docs.google.com/document/d/1y0PEBZv47rfYkvLQugUv_RmInahlcMyo898fLabTxQ0/edit?usp=sharing' }
         describe 'with valid export format' do
           subject { described_class.new(file_url, :html).call }
 

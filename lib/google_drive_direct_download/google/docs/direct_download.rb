@@ -3,7 +3,7 @@
 module Google
   module Docs
     class DirectDownload
-      VALID_EXPORT_FORMATS = %w[html pdf docx txt odt epub].freeze
+      VALID_EXPORT_FORMATS = %w[html pdf docx txt odt epub csv].freeze
       BASE_URL = 'https://docs.google.com/'
 
       attr_accessor :file_url, :export_format
@@ -15,7 +15,7 @@ module Google
       def call
         return '' if invalid_file_url?
 
-        "#{BASE_URL}document/d/#{file_id}/export?format=#{export_format}"
+        "#{start_url}/d/#{file_id}/export?format=#{export_format}"
       end
 
       private
@@ -41,6 +41,10 @@ module Google
 
       def invalid_file_url_domain?
         !file_url.start_with?(BASE_URL)
+      end
+
+      def start_url
+        file_url.match(/[a-zA-Z0-9_\:\/\.]+\/d\//).to_s.gsub('/d/', '')
       end
     end
   end
