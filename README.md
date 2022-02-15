@@ -16,11 +16,6 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install google_drive_direct_download
-
-
 ## Usage for Google Direct Download
 
 ```ruby
