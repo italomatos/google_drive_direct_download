@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'google_drive_direct_download'
+gem 'google_drive_direct_download', git: 'https://github.com/italomatos/google_drive_direct_download.git'
 ```
 
 And then execute:
