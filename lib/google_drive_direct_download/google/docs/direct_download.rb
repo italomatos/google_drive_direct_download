@@ -14,6 +14,7 @@ module Google
 
       def call
         return '' if invalid_file_url?
+        return "#{start_url}/d/#{file_id}/export/#{export_format}" if presentation_document?
 
         "#{start_url}/d/#{file_id}/export?format=#{export_format}"
       end
@@ -31,6 +32,14 @@ module Google
         @file_id ||= file_url.match(/\d[a-zA-Z0-9_-]+/).to_s
       end
 
+      def presentation_document?
+        file_type == 'presentation'
+      end
+
+      def file_type
+        @file_type ||= /(?<=\/)[a-z]+(?=\/d)/.match(file_url).to_s
+      end
+
       def invalid_export_format?
         !VALID_EXPORT_FORMATS.include?(export_format.to_s)
       end
@@ -44,7 +53,7 @@ module Google
       end
 
       def start_url
-        file_url.match(/[a-zA-Z0-9_\:\/\.]+\/d\//).to_s.gsub('/d/', '')
+        /.*(?=\/d)/.match(file_url)
       end
     end
   end
